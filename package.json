@@ -1,0 +1,19 @@
+{
+  "name": "HanoiTower",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/victus64/HanoiTower.git"
+  },  
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "~3.4.6"
+  },
+  "devDependencies": {
+    "mocha": "1.7.0",
+    "should": "1.2.1",
+    "supertest": "0.4.0"
+  }
+}
