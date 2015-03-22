@@ -39,7 +39,7 @@ describe('GET /home', function () {
   it('should contain text "Home page"', function (done) {
     request(server)
       .get('/home')
-      .expect(/Home page/, done);
+      .expect(/Главная страница пустая/, done);
   });
 });
 

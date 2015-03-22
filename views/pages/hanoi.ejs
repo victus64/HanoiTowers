@@ -1,0 +1,22 @@
+﻿<% layout('../layout') -%>
+<h1><%= title %></h1>
+<script type="text/javascript" src="js/HanoiModel.js"></script>
+<script type="text/javascript" src="js/Hanoi.js"></script>
+<canvas id="HanoiTower" width="700" height="300">
+    canvas не поддерживается!
+</canvas>
+<script>
+    Start();
+</script>
+<div style=" overflow:auto; border: 1px solid; width:800px">
+<a href="https://ru.wikipedia.org/wiki/%D5%E0%ED%EE%E9%F1%EA%E0%FF_%E1%E0%F8%ED%FF">
+    <img src="img/Tower_of_Hanoi.jpeg" width="280" height="140" align="right" alt="Модель ханойских башенок c 8-ю дисками"></img>
+</a>
+<p><b><%= htower %></b><%= text1 %></p>
+<img src="img/Tower_of_Hanoi.gif" width="280" height="140" align="right"></img>
+<p><%= text2 %></p>
+<script>
+    document.writeln("<p><%= hello %></p>");
+    document.writeln("<p><%= hello %></p>");
+</script>
+</div>

@@ -52,6 +52,26 @@ module.exports = function(grunt) {
                 }
             }
         },
+        jscoverage: {
+            src: {
+                expand: true,
+                cwd: 'js/',
+                src: ['**/*.js'],
+                dest: 'build/js-cov/',
+                ext: '.js',
+            },
+            otherstuff: {
+                expand: true,
+                cwd: 'otherstuff/',
+                src: ['**/*.js'],
+                dest: 'otherstuff-cov/',
+                ext: '.js',
+            },
+            options: {
+                // custom options
+                encoding: 'utf8'
+            }
+        },
         watch: {
             scripts: {
                 files: ['js/*.js'],
@@ -70,6 +90,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-qunit');
     grunt.loadNpmTasks('grunt-contrib-imagemin');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks("grunt-jscoverage");
 
     // 4. Мы сообщаем Grunt, что нужно делать, когда мы введём "grunt" в терминале.
     grunt.registerTask('default', ['concat', 'uglify', 'imagemin']);

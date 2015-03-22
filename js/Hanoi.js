@@ -43,7 +43,18 @@ function circle(n, vm) {
     this.Draw = function () {
         if (this.state != 'onStick') return false;
         this.vm.ctx.fillStyle = this.color;
-        this.vm.ctx.fillRect(this.x - this.r, this.y, this.r * 2, this.h);
+        var ctx = this.vm.ctx; 
+        var $h = 0 ^ this.h / 2; // Половина высоты для скругленных краев
+        var $r = $h * 1.3, $s = 0^$h*0.53; 
+        ctx.fillRect(this.x - this.r + $s, this.y, this.r * 2 - 2*$s, this.h);
+        ctx.beginPath();
+        ctx.arc(this.x - this.r + $r, this.y + $h, $r, Math.PI * 0.71, Math.PI * 1.29, false);
+        ctx.closePath();
+        ctx.fill(); // Заливка окружности
+        ctx.beginPath();
+        ctx.arc(this.x + this.r - $r, this.y + $h, $r, Math.PI * 1.71, Math.PI * 0.29, false);
+        ctx.closePath();
+        ctx.fill(); // Заливка окружности
         return true;
     };
 }
