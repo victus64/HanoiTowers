@@ -1,0 +1,10 @@
+{
+    "name": "HanoiTower",
+    "version": "0.0.1",
+    "dependencies": {
+        "assert": "~0.1.0",
+        "qunit": "~1.17.1"
+    },
+    "devDependencies": {
+    }
+}

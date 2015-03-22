@@ -1,4 +1,4 @@
-﻿function InitCanvas(name) {
+function InitCanvas(name) {
     var g = {};
     g.canvas = document.getElementById(name);
     g.ctx = g.canvas.getContext('2d'); // Получаем 2D контекст
@@ -10,11 +10,11 @@
 }
 
 function Start() {
-    document.writeln("<p>Тут будут строиться Ханойские башенки!</p>"); // jshint ignore:line
+    document.writeln("<p>Тут будут строиться Ханойские башенки!</p>");
     var HModel = new HanoiModel(8);
     var HVModel = new HanoiView(HModel, "HanoiTower");
     HVModel.DrawAll();
-}
+};
 
 function circle(n, vm) {
     if (!vm) vm = HVModel; // Если вью-модель не передали - модель по умолчанию.
@@ -34,7 +34,7 @@ function circle(n, vm) {
         this.p = p;
         var w = this.vm.canvas.width, h = this.vm.canvas.height;
         this.x = 0 ^ (w / 6 * (s * 2 + 1)); // Центр стержня по горизонтали
-        this.y = h - this.h * (p + 2); // Верхняя точка кольца
+        this.y = h - this.h * (p + 2) // Верхняя точка кольца
         this.ok = function () {
             return !(0 >= this.s || this.s > 2 || 0 >= this.p || this.p > this.vm.N || 0 >= this.n || this.n > this.vm.N);
         };
@@ -57,11 +57,11 @@ function HanoiView(hmodel, canvasName) {
     this.circleColors = (function (n) {
         var cc = [];
         for (var i = 0; i < n; i++) {
-            cc[i] = '#' +
-                (0 ^ (Math.random() * (200))+16).toString(16) + // +16 - чтобы было двузначное число
-                (0 ^ (Math.random() * (200))+16).toString(16) +
-                (0 ^ (Math.random() * (200))+16).toString(16);
-        }
+            cc[i] = '#'
+                + (0 ^ (Math.random() * (200))+16).toString(16) // +16 - чтобы было двузначное число
+                + (0 ^ (Math.random() * (200))+16).toString(16)
+                + (0 ^ (Math.random() * (200))+16).toString(16);
+        };
         return cc;
     })(this.N);
     this.DrawCircle = function (s, p, n) {
@@ -74,6 +74,37 @@ function HanoiView(hmodel, canvasName) {
             }
         }
     };
-}
+};
 
 
+;// Модель Ханойских башенок
+/* Зависимости (пока модулю самому ничего не нужно)
+var EventEmitter = require('events').EventEmitter
+  , spawn = require('child_process').spawn;
+ */
+/**
+ * Модуль отдает объект HanoiModel;
+ */
+// Состояние
+function HanoiModel(n) {
+    // Стержни
+    this.N = n;
+    // 3 стержня. Самая нижняя позиция на стержне 0, вверх не больше 63
+    this.Sticks = [(function (n) {
+        //assert
+        var stick = [];
+        for (var i = 0; i < n; i++) {
+            stick.push(i);
+        }
+        return stick;
+    })(n), [], []];
+    this.MoveHead = function (lvl, from, to) {
+        if (lvl == this.Sticks[from].length - 1) {
+            // Перемещаем самое верхнее кольцо
+            this.Sticks[to].push(this.Sticks[from].pop());
+        }
+    }
+};
+;exports.home = function (req, res) {
+  res.send('Home page');
+};
